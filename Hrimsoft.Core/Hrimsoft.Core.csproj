@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageId>Hrimsoft.Core</PackageId>
+        <Title>Hrimsoft.Core</Title>
+        <Authors>Basim Al-Jawahery</Authors>
+        <Description>Provides some useful exceptions, helpers and extensions</Description>
+        <RepositoryUrl>https://github.com/Basim108/hrimsoft.core.git</RepositoryUrl>
+        <Company>Himsoft</Company>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReleaseNotes>Provides some useful exceptions, helpers and extensions</PackageReleaseNotes>
+    </PropertyGroup>
+
+</Project>
