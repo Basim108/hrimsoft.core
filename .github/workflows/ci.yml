@@ -23,3 +23,6 @@ jobs:
 
     - name: 'Build project'
       run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+      
+    - name: 'Unit tests'
+      run: dotnet test ${{ env.TESTS_PROJECT_PATH }}
