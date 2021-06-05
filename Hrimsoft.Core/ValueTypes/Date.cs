@@ -88,15 +88,6 @@ namespace Hrimsoft.Core.ValueTypes
                 throw new ArgumentOutOfRangeException(nameof(day), day, string.Format(ARG_MUST_BE_LESS_THAN_N, nameof(day), daysInMonth, day));
         }
 
-        /// <summary> Casts Date type to DateTime </summary>
-        public static implicit operator Date(DateTime dateTime) => new Date(dateTime);
-
-        /// <summary> Casts Date type to DateTime </summary>
-        public static implicit operator DateTime(Date date) => new DateTime(date.Year, date.Month, date.Day);
-
-        /// <summary> Casts Date type to DateTimeOffset </summary>
-        public static implicit operator DateTimeOffset(Date date) => new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.Zero);
-
         /// <summary>Converts the value of the current <see cref="T:System.DateTime"></see> object to its equivalent string representation using the specified format and the formatting conventions of the current culture.</summary>
         /// <param name="format">A standard or custom date and time format string.</param>
         /// <returns>A string representation of value of the current <see cref="T:System.DateTime"></see> object as specified by <paramref name="format">format</paramref>.</returns>
@@ -135,7 +126,6 @@ namespace Hrimsoft.Core.ValueTypes
                 return hashCode;
             }
         }
-
 
         #region compare operators with Date and Date
 

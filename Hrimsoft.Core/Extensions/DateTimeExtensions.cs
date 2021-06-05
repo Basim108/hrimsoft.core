@@ -1,4 +1,5 @@
 using System;
+using Hrimsoft.Core.ValueTypes;
 
 namespace Hrimsoft.Core.Extensions
 {
@@ -25,18 +26,17 @@ namespace Hrimsoft.Core.Extensions
         /// Cut micro and nano seconds from DateTime 
         /// </summary>
         /// <param name="dateTime">date and time that must be cut</param>
-        public static DateTime TruncateToMilliseconds(this DateTime dateTime)
-        {
-            return dateTime.Truncate(TimeSpan.FromMilliseconds(1));
-        }
-        
+        public static DateTime TruncateToMilliseconds(this DateTime dateTime) 
+            => dateTime.Truncate(TimeSpan.FromMilliseconds(1));
+
         /// <summary>
         /// Cut micro-, nano- and milli- seconds from DateTime 
         /// </summary>
         /// <param name="dateTime">date and time that must be cut</param>
-        public static DateTime TruncateToSeconds(this DateTime dateTime)
-        {
-            return dateTime.Truncate(TimeSpan.FromSeconds(1));
-        }
+        public static DateTime TruncateToSeconds(this DateTime dateTime) 
+            => dateTime.Truncate(TimeSpan.FromSeconds(1));
+
+        /// <summary> Converts DateTime to Date </summary>
+        public static Date ToDate(this DateTime dateTime) => new Date(dateTime);
     }
 }
