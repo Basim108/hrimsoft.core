@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Hrimsoft.Core.ValueTypes
+namespace Hrimsoft.Core.ValueObjects
 {
     /// <summary> Immutable structure represents date value without time </summary>
     public struct Date
@@ -22,10 +22,10 @@ namespace Hrimsoft.Core.ValueTypes
         /// </summary>
         public readonly byte Day;
 
-        /// <summary>Represents the smallest possible value of <see cref="T:Hrimsoft.Core.ValueTypes.Date"></see>. This field is read-only.</summary>
+        /// <summary>Represents the smallest possible value of <see cref="T:Hrimsoft.Core.ValueObjects.Date"></see>. This field is read-only.</summary>
         public static readonly Date MinValue = new Date(DateTime.MinValue);
 
-        /// <summary>Represents the largest possible value of <see cref="T:Hrimsoft.Core.ValueTypes.Date"></see>. This field is read-only.</summary>
+        /// <summary>Represents the largest possible value of <see cref="T:Hrimsoft.Core.ValueObjects.Date"></see>. This field is read-only.</summary>
         public static readonly Date MaxValue = new Date(DateTime.MaxValue);
 
         /// <summary>

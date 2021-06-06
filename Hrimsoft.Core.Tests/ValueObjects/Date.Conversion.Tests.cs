@@ -1,10 +1,10 @@
 using System;
 using FluentAssertions;
 using Hrimsoft.Core.Extensions;
-using Hrimsoft.Core.ValueTypes;
+using Hrimsoft.Core.ValueObjects;
 using Xunit;
 
-namespace Hrimsoft.Core.Tests.ValueTypes
+namespace Hrimsoft.Core.Tests.ValueObjects
 {
     public class DateConversionTests
     {

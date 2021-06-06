@@ -1,6 +1,6 @@
 using System;
 
-namespace Hrimsoft.Core.ValueTypes
+namespace Hrimsoft.Core.ValueObjects
 {
     public static class DateExtensions
     {
