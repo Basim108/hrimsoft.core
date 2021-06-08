@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Hrimsoft.Core.ValueObjects;
 using Xunit;
@@ -368,6 +370,22 @@ namespace Hrimsoft.Core.Tests.ValueObjects
             Assert.True(dt1 <= dt2);
 
             Assert.True(dt1 <= Date.MinValue);
+        }
+
+
+        [Fact]
+        public void Should_be_sorted_in_a_list()
+        {
+            var list = new List<Date>
+                       {
+                           new(2019, 9, 20),
+                           new(2019, 9, 11),
+                           new(2019, 9, 14)
+                       };
+            var sorted = list.OrderBy(x => x).ToList();
+            sorted[0].Should().Be(new Date(2019, 9, 11));
+            sorted[1].Should().Be(new Date(2019, 9, 14));
+            sorted[2].Should().Be(new Date(2019, 9, 20));
         }
     }
 }

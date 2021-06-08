@@ -4,7 +4,7 @@ using System.Globalization;
 namespace Hrimsoft.Core.ValueObjects
 {
     /// <summary> Immutable structure represents date value without time </summary>
-    public struct Date
+    public struct Date: IComparable<Date>
     {
         /// <summary>
         /// The year (1 through 65535).
@@ -109,6 +109,13 @@ namespace Hrimsoft.Core.ValueObjects
             return new DateTime(Year, Month, Day).ToString(format, provider);
         }
 
+        public int CompareTo(Date other)
+        {
+            if(this < other)
+                return -1;
+            return this > other ? 1 : 0;
+        }
+        
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
