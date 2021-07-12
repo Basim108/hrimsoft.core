@@ -1,10 +1,11 @@
 using System;
 using System.Globalization;
+using Hrimsoft.Core.Extensions;
 
 namespace Hrimsoft.Core.ValueObjects
 {
     /// <summary> Immutable structure represents date value without time </summary>
-    public struct Date: IComparable<Date>
+    public struct Date : IComparable<Date>
     {
         /// <summary>
         /// The year (1 through 65535).
@@ -60,6 +61,15 @@ namespace Hrimsoft.Core.ValueObjects
             Day   = day;
             Validate(year, month, day);
         }
+        
+        /// <summary>Returns a new <see cref="T:Hrimsoft.Date"></see> that adds the specified number of days to the value of this instance.</summary>
+        /// <param name="value">A number of whole and fractional days. The value parameter can be negative or positive.</param>
+        /// <returns>An object whose value is the sum of the date and time represented by this instance and the number of days represented by <paramref name="value">value</paramref>.</returns>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">The resulting <see cref="T:Hrimsoft.Date"></see> is less than <see cref="F:System.DateTime.MinValue"></see> or greater than <see cref="F:Hrimsoft.Date.MaxValue"></see>.</exception>
+        public Date AddDays(double value) =>
+            value == 0 
+                ? new Date(this.Year, this.Month, this.Day) 
+                : this.ToDateTime().AddDays(value).ToDate();
 
         /// <summary>
         /// Validate date parts
@@ -111,11 +121,11 @@ namespace Hrimsoft.Core.ValueObjects
 
         public int CompareTo(Date other)
         {
-            if(this < other)
+            if (this < other)
                 return -1;
             return this > other ? 1 : 0;
         }
-        
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {

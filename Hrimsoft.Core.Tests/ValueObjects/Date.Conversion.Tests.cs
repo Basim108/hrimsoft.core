@@ -37,6 +37,27 @@ namespace Hrimsoft.Core.Tests.ValueObjects
             dateTime.Month.Should().Be(2);
             dateTime.Day.Should().Be(1);
         }
+        
+        [Fact]
+        public void ToDateTimeOffset_Should_Cast_Date()
+        {
+            var date     = new Date(2021, 02, 01);
+            var dateTime = date.ToDateTimeOffset();
+            dateTime.Year.Should().Be(2021);
+            dateTime.Month.Should().Be(2);
+            dateTime.Day.Should().Be(1);
+        }
+        
+        [Fact]
+        public void ToDateTimeOffset_Should_Cast_Date_With_Offset()
+        {
+            var date     = new Date(2021, 02, 01);
+            var dateTime = date.ToDateTimeOffset(TimeSpan.FromHours(3));
+            dateTime.Year.Should().Be(2021);
+            dateTime.Month.Should().Be(2);
+            dateTime.Day.Should().Be(1);
+            dateTime.Offset.Should().Be(TimeSpan.FromHours(3));
+        }
 
         [Fact]
         public void ToString_Given_SortFormat_Returns_DateTime_ToString()
