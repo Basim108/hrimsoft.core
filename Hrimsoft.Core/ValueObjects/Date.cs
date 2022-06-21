@@ -5,7 +5,7 @@ using Hrimsoft.Core.Extensions;
 namespace Hrimsoft.Core.ValueObjects
 {
     /// <summary> Immutable structure represents date value without time </summary>
-    public struct Date : IComparable<Date>
+    public readonly struct Date : IComparable<Date>
     {
         /// <summary>
         /// The year (1 through 65535).

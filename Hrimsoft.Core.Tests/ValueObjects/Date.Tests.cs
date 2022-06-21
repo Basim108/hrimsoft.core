@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using FluentAssertions;
 using Hrimsoft.Core.ValueObjects;
@@ -39,6 +41,17 @@ namespace Hrimsoft.Core.Tests.ValueObjects
             new Date(2021, 1, 31).AddDays(1)
                                  .Should()
                                  .Be(new Date(2021, 2, 1));
+        }
+
+        [Fact]
+        public void GetHashCode_Given_Same_Value_Returns_Same_Hash()
+        {
+            var date = new Date(DateTime.Now);
+            var dateHashes = new HashSet<int>();
+            for (var i = 0; i < 1000; i++) {
+                dateHashes.Add(date.GetHashCode());
+            }
+            dateHashes.Count.Should().Be(1);
         }
     }
 }
