@@ -7,7 +7,8 @@ namespace Hrimsoft.Core.Exceptions
     /// <summary>
     /// Any error related to wrong or missed configuration
     /// </summary>
-    public class ConfigurationException : ApplicationException
+    [Serializable]
+    public class ConfigurationException : Exception
     {
         /// <inheritdoc />
         public ConfigurationException()

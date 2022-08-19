@@ -1,5 +1,6 @@
 using System;
 using FluentAssertions;
+using FluentAssertions.Extensions;
 using Hrimsoft.Core.Extensions;
 using Xunit;
 
@@ -58,6 +59,15 @@ namespace Hrimsoft.Core.Tests.Extensions
             var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
             expected.AddMilliseconds(20)
                     .TruncateToSeconds()
+                    .Should().Be(expected);
+        }
+        
+        [Fact]
+        public void TruncateToMicro_Should_Cut_To_Microseconds()
+        {
+            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, 0, TimeSpan.Zero).AddMicroseconds(1);
+            expected.AddNanoseconds(200)
+                    .TruncateToMicroseconds()
                     .Should().Be(expected);
         }
 

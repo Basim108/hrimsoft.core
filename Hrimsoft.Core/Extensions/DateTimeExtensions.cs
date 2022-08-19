@@ -23,6 +23,13 @@ namespace Hrimsoft.Core.Extensions
         }
         
         /// <summary>
+        /// Cut nano seconds from DateTime 
+        /// </summary>
+        /// <param name="dateTime">date and time that must be cut</param>
+        public static DateTime TruncateToMicroseconds(this DateTime dateTime) 
+            => dateTime.Truncate(TimeSpan.FromMilliseconds(0.001));
+        
+        /// <summary>
         /// Cut micro and nano seconds from DateTime 
         /// </summary>
         /// <param name="dateTime">date and time that must be cut</param>
