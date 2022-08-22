@@ -4,95 +4,95 @@ using FluentAssertions.Extensions;
 using Hrimsoft.Core.Extensions;
 using Xunit;
 
-namespace Hrimsoft.Core.Tests.Extensions
+namespace Hrimsoft.Core.Tests.DateAndTime
 {
-    public class DateTimeOffsetExtensionTests
+    public class DateTimeExtensionTests
     {
         [Fact]
         public void Truncate_Should_Cut_To_Milliseconds()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, 20, TimeSpan.Zero);
-            expected.AddMilliseconds(0.3)
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
+            expected.AddMilliseconds(20.3)
                     .Truncate(TimeSpan.FromMilliseconds(1))
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0).AddMilliseconds(20));
         }
 
         [Fact]
         public void Truncate_Should_Cut_To_Seconds()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
             expected.AddMilliseconds(20)
                     .Truncate(TimeSpan.FromSeconds(10))
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0));
         }
 
         [Fact]
         public void Truncate_Should_Cut_To_Minutes()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
             expected.AddSeconds(20.33)
                     .Truncate(TimeSpan.FromMinutes(1))
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0));
         }
 
         [Fact]
         public void Truncate_Should_Cut_To_Hours()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
             expected.AddMinutes(20.33)
                     .Truncate(TimeSpan.FromHours(1))
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0));
         }
 
         [Fact]
         public void TruncateToMilliseconds_Should_Cut_To_Milliseconds()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, 20, TimeSpan.Zero);
-            expected.AddMilliseconds(0.3)
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
+            expected.AddMilliseconds(20.3)
                     .TruncateToMilliseconds()
-                    .Should().Be(expected);
-        }
-
-        [Fact]
-        public void TruncateToSeconds_Should_Cut_To_Seconds()
-        {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
-            expected.AddMilliseconds(20)
-                    .TruncateToSeconds()
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0).AddMilliseconds(20));
         }
         
         [Fact]
         public void TruncateToMicro_Should_Cut_To_Microseconds()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, 0, TimeSpan.Zero).AddMicroseconds(1);
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0, 0).AddMicroseconds(1);
             expected.AddNanoseconds(200)
                     .TruncateToMicroseconds()
                     .Should().Be(expected);
         }
 
         [Fact]
+        public void TruncateToSeconds_Should_Cut_To_Seconds()
+        {
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
+            expected.AddMilliseconds(20)
+                    .TruncateToSeconds()
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0));
+        }
+
+        [Fact]
         public void Truncate_Given_Zero_Should_Return_Unchanged()
         {
-            var expected = new DateTimeOffset(2021, 02, 01, 0, 0, 0, TimeSpan.Zero);
+            var expected = new DateTime(2021, 02, 01, 0, 0, 0);
             expected.Truncate(TimeSpan.Zero)
-                    .Should().Be(expected);
+                    .Should().Be(new DateTime(2021, 02, 01, 0, 0, 0));
         }
 
         [Fact]
         public void Truncate_Given_MinValue_Should_Return_Unchanged()
         {
-            DateTimeOffset.MinValue
+            DateTime.MinValue
                     .Truncate(TimeSpan.FromMilliseconds(1))
-                    .Should().Be(DateTimeOffset.MinValue);
+                    .Should().Be(DateTime.MinValue);
         }
         
         [Fact]
         public void Truncate_Given_MaxValue_Should_Return_Unchanged()
         {
-            DateTimeOffset.MaxValue
+            DateTime.MaxValue
                     .Truncate(TimeSpan.FromMilliseconds(1))
-                    .Should().Be(DateTimeOffset.MaxValue);
+                    .Should().Be(DateTime.MaxValue);
         }
     }
 }
